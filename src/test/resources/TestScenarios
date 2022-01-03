@@ -1,0 +1,124 @@
+// Create an user
+
+POST http://localhost:8080/createUser
+Content-Type: application/json
+
+{
+  "userId": "1004",
+  "name": "Juhee",
+  "emailId": "juheejameela@gmail.com",
+  "password": "Abudhabi@1",
+  "posts": [
+
+  ]
+}
+
+//Retrieve the user details.
+
+GET http://localhost:8080/fetchUserDetails/1001
+
+//Create a new user with some posts
+
+POST http://localhost:8080/createUser
+Content-Type: application/json
+
+{
+  "userId": "1001",
+  "name": "Nashiya",
+  "emailId": "nashiyahussain@gmail.com",
+  "password": "Canada@1",
+  "posts": [
+    {
+      "postId": "101",
+      "imageUrl": "C:\\Users\\moham\\IdeaProjects\\RedThreadComm\\src\\main\\resources\\redThreadTag.png",
+      "text": "First Post",
+      "date": "2021-12-29",
+      "likedUsers": []
+    },
+    {
+      "postId": "102",
+      "imageUrl": "C:\\Users\\moham\\IdeaProjects\\RedThreadComm\\src\\main\\resources\\Home.jpg",
+      "text": "Second Post",
+      "date": "2021-12-29",
+      "likedUsers": []
+    }
+  ]
+}
+
+
+Sample Date:
+
+2022-01-01T00:57:23.711+00:00
+
+//User Authentication
+POST http://localhost:8080/authUser
+Content-Type: application/json
+
+{
+  "userId": "1003",
+  "name": "Mohamed",
+  "emailId": "mohameduvaish@gmail.com",
+  "password": "Toronto@1",
+  "posts": []
+  }
+
+
+//Create a new post
+PATCH http://localhost:8080/createPost/1002
+Content-Type: application/json
+
+{
+  "postId": "103",
+  "imageUrl": "C:\\Users\\moham\\IdeaProjects\\RedThreadComm\\src\\main\\resources\\Home.jpg",
+  "text": "Third Post",
+  "date": "2021-12-31",
+  "likedUsers": []
+}
+
+
+//Fetch the post details.
+GET http://localhost:8080/fetchPost/103
+
+Output:
+[
+  {
+    "postId": "103",
+    "imageUrl": "C:\\Users\\moham\\IdeaProjects\\RedThreadComm\\src\\main\\resources\\Home.jpg",
+    "text": "Third Post",
+    "date": "2021-12-31T00:00:00.000+00:00",
+    "likedUsers": []
+  }
+]
+
+// Fetch All the posts posted by the User sorted by date created.
+
+GET http://localhost:8080/fetchPosts/1003
+
+Output
+
+[
+  {
+    "postId": "105",
+    "imageUrl": "C:\\Users\\moham\\IdeaProjects\\RedThreadComm\\src\\main\\resources\\Home.jpg",
+    "text": "Fifth Post",
+    "date": "2021-12-30T00:00:00.000+00:00",
+    "likedUsers": []
+  },
+  {
+    "postId": "104",
+    "imageUrl": "C:\\Users\\moham\\IdeaProjects\\RedThreadComm\\src\\main\\resources\\redThreadTag.png",
+    "text": "Fourth Post",
+    "date": "2021-12-28T00:00:00.000+00:00",
+    "likedUsers": []
+  }
+]
+
+Like a Post
+###
+POST http://localhost:8080/likePost/{{postId}}
+
+###
+GET http://localhost:8080/fetchUserLikedPosts/1004
+
+
+
